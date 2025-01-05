@@ -1,33 +1,31 @@
-// Tarifler dizisi, localStorage'dan okunuyor veya boş bir dizi oluşturuluyor
 let recipes = JSON.parse(localStorage.getItem('recipes')) || [];
 
-// Tarifi ekleme fonksiyonu
+
 function addRecipe() {
-    const recipe = prompt('Lütfen bir yemek tarifi girin:'); // Kullanıcıdan tarif al
+    const recipe = prompt('Lütfen bir yemek tarifi girin:'); 
     if (recipe) {
-        recipes.push(recipe); // Diziye ekle
-        localStorage.setItem('recipes', JSON.stringify(recipes)); // localStorage'a kaydet
+        recipes.push(recipe); 
+        localStorage.setItem('recipes', JSON.stringify(recipes)); 
         console.log(`Tarif eklendi: ${recipe}`);
     } else {
         console.log('Boş tarif girilemez!');
     }
 }
 
-// Tarif silme fonksiyonu
+
 function deleteRecipe() {
-    listRecipes(); // Mevcut tarifleri göster
-    const index = prompt('Silmek istediğiniz tarifin numarasını girin:'); // Silinecek tarifin numarasını al
-    const parsedIndex = parseInt(index, 10) - 1; // İndeksi doğru formatta al
+    listRecipes(); 
+    const index = prompt('Silmek istediğiniz tarifin numarasını girin:'); 
+    const parsedIndex = parseInt(index, 10) - 1; 
     if (!isNaN(parsedIndex) && parsedIndex >= 0 && parsedIndex < recipes.length) {
-        const removed = recipes.splice(parsedIndex, 1); // Diziye silme işlemi
-        localStorage.setItem('recipes', JSON.stringify(recipes)); // localStorage'ı güncelle
+        const removed = recipes.splice(parsedIndex, 1); 
+        localStorage.setItem('recipes', JSON.stringify(recipes)); 
         console.log(`Silinen tarif: ${removed}`);
     } else {
         console.log('Geçersiz numara!');
     }
 }
 
-// Tarifleri listeleme fonksiyonu
 function listRecipes() {
     console.log('Kayıtlı tarifler:');
     if (recipes.length > 0) {
@@ -39,7 +37,7 @@ function listRecipes() {
     }
 }
 
-// Ana uygulama akışı
+
 function Menu(){
 let choice = prompt(`
 Yemek Tarifleri Uygulaması:
